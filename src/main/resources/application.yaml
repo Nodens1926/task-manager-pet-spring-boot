@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: task-manager-pet-spring-boot
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/task_manager_db
+    username: postgres
+    password: postgres
+  liquibase:
+    enabled: false
