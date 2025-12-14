@@ -1,0 +1,104 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: anton
+      changes:
+        - createTable:
+            tableName: tasks
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: status
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: priority
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: due_date
+                  type: timestamp
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: current_timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValueComputed: current_timestamp
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: anton
+      changes:
+        - createTable:
+            tableName: tags
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: colour
+                  type: varchar(7)
+              - column:
+                  name: description
+                  type: varchar(500)
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: current_timestamp
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 3
+      author: anton
+      changes:
+        - createTable:
+            tableName: tasks_tags
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: task_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_task
+                    references: tasks(id)
+              - column:
+                  name: tag_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_tag
+                    references: tags(id)
+
+
