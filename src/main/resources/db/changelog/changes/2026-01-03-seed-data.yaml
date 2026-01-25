@@ -1,0 +1,76 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: anton
+      changes:
+        - insert:
+            tableName: tags
+            columns:
+              - column:
+                  name: id
+                  value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
+              - column:
+                  name: name
+                  value: "Работа"
+              - column:
+                  name: colour
+                  value: "#FF5733"
+              - column:
+                  name: description
+                  value: "Задачи, связанные с работой"
+              - column:
+                  name: created_at
+                  valueComputed: current_timestamp
+        - insert:
+            tableName: tags
+            columns:
+              - column:
+                  name: id
+                  value: "b1ffcc99-9c0b-4ef8-bb6d-6bb9bd380a12"
+              - column:
+                  name: name
+                  value: "Личное"
+              - column:
+                  name: colour
+                  value: "#33FF57"
+              - column:
+                  name: description
+                  value: "Личные задачи"
+              - column:
+                  name: created_at
+                  valueComputed: current_timestamp
+        - insert:
+            tableName: tags
+            columns:
+              - column:
+                  name: id
+                  value: "c2eecc99-9c0b-4ef8-bb6d-6bb9bd380a13"
+              - column:
+                  name: name
+                  value: "Срочно"
+              - column:
+                  name: colour
+                  value: "#FF3333"
+              - column:
+                  name: description
+                  value: "Срочные задачи"
+              - column:
+                  name: created_at
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: 5
+      author: anton
+      changes:
+        - sql:
+            sql: |
+              INSERT INTO tasks (id, title, description, status, priority, created_at, updated_at) 
+              VALUES 
+                ('d3eecc99-9c0b-4ef8-bb6d-6bb9bd380a14', 'Изучить Spring Boot', 'Пройти курс по Spring Boot', 'IN_PROGRESS', 'HIGH', current_timestamp, current_timestamp),
+                ('e4ffcc99-9c0b-4ef8-bb6d-6bb9bd380a15', 'Сделать домашнее задание', 'Выполнить задания по программированию', 'TODO', 'MEDIUM', current_timestamp, current_timestamp),
+                ('f5eecc99-9c0b-4ef8-bb6d-6bb9bd380a16', 'Купить продукты', 'Молоко, хлеб, яйца', 'TODO', 'LOW', current_timestamp, current_timestamp);
+
+              -- Связать задачи с тегами
+              INSERT INTO tasks_tags (id, task_id, tag_id)
+              VALUES 
+                ('b67eb765-3773-4eca-82ef-31ca0dda96e1', 'd3eecc99-9c0b-4ef8-bb6d-6bb9bd380a14', 'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11'),
+                ('a9db6338-3766-4d07-987a-599fc86ff936', 'd3eecc99-9c0b-4ef8-bb6d-6bb9bd380a14', 'c2eecc99-9c0b-4ef8-bb6d-6bb9bd380a13');
