@@ -6,6 +6,7 @@ import com.example.task_manager_pet_spring_boot.dto.TaskDtoRs;
 import com.example.task_manager_pet_spring_boot.entity.Task;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.Mappings;
 
 @Mapper(componentModel="spring")
@@ -14,4 +15,6 @@ public abstract class TaskMapper {
     public abstract TaskDtoRs map(Task model);
 
     public abstract Task rqToModel(TaskDtoRq taskDtoRq);
+
+    public abstract Task rqToModel(TaskDtoRq taskDtoRq, @MappingTarget Task task);
 }
