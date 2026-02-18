@@ -2,8 +2,7 @@ package com.example.task_manager_pet_spring_boot.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.*;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -39,6 +38,8 @@ public class Task {
     @Column(name = "due_date")
     private LocalDateTime dueDate;
 
+//    @Fetch(FetchMode.SUBSELECT)
+//    @BatchSize(size = 2)
     @ToString.Exclude
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
