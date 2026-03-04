@@ -13,3 +13,8 @@ spring:
         format_sql: true
     hibernate:
       ddl-auto: none
+
+job:
+  hello: "*/2 * * * * *"
+hello:
+  name: name
